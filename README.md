@@ -31,6 +31,7 @@
   - [Predefined Variables](https://github.com/GabrielCode-Full/php-cheatsheet#predefined-variables)
   - [Variable scope](https://github.com/GabrielCode-Full/php-cheatsheet#variable-scope)
   - [Variable variables](https://github.com/GabrielCode-Full/php-cheatsheet#variable-variables)
+- [Constants](https://github.com/GabrielCode-Full/php-cheatsheet#constants)
 - [Data Types](https://github.com/GabrielCode-Full/php-cheatsheet#data-types)
 
 ### Types of installation
@@ -149,6 +150,27 @@ The scope of a variable is the context within which it is defined. For the most 
 * **Global variables:** The variables declared outside a function are called global variables.
 * **Static variable:** It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as static variables.
 
+## Constants
+
+A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
+```php
+<?php
+
+// Valid constant names
+define("FOO",     "something");
+define("FOO2",    "something else");
+define("FOO_BAR", "something more");
+
+// Invalid constant names
+define("2FOO",    "something");
+
+// This is valid, but should be avoided:
+// PHP may one day provide a magical constant
+// that will break your script
+define("__FOO__", "something"); 
+
+?>
+```
 ## Data Types
 
 PHP supports ten primitive types.
