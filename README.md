@@ -50,9 +50,11 @@ When PHP parses a file, it looks for opening and closing tags, which are `<?php`
 // Now php recommended you to use only two tags.
 
 // 1.Standard tag which is 
+
 <?php echo "I'm Standard tag"; ?>
 
 // 2.Short echo tag which is 
+
 <?= "I'm Short echo tag"; ?>
 ```
 
