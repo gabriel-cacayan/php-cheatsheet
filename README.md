@@ -28,6 +28,9 @@
   - [Escaping from HTML](https://github.com/GabrielCode-Full/php-cheatsheet#escaping-from-html)
   - [Instruction separation](https://github.com/GabrielCode-Full/php-cheatsheet#instruction-separation)
 - [Variables](https://github.com/GabrielCode-Full/php-cheatsheet#variables)
+  - [Predefined Variables](https://github.com/GabrielCode-Full/php-cheatsheet#predefined-variables)
+  - [Variable scope](https://github.com/GabrielCode-Full/php-cheatsheet#variable-scope)
+  - [Variable variables](https://github.com/GabrielCode-Full/php-cheatsheet#variable-variables)
 - [Data Types](https://github.com/GabrielCode-Full/php-cheatsheet#data-types)
 
 ### Types of installation
@@ -45,8 +48,11 @@ When PHP parses a file, it looks for opening and closing tags, which are `<?php`
 ```php
 // Now php recommended you to use only two tags.
 
-1.Standard tag which is <?php echo "I'm Standard tag"; ?>
-2.Short echo tag which is <?= "I'm Short echo tag"; ?>
+// 1.Standard tag which is 
+<?php echo "I'm Standard tag"; ?>
+
+// 2.Short echo tag which is 
+<?= "I'm Short echo tag"; ?>
 ```
 
 If a file contains only PHP code, it is preferable to omit the PHP closing tag at the end of the file. 
@@ -115,6 +121,33 @@ $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
   echo $firstName . " " . $lastName; // Mikasa Ackerman
 ?>  
 ```
+### Predefined Variables
+
+PHP provides a large number of predefined variables to all scripts. The variables represent everything from external variables to built-in environment variables, last error messages to last retrieved headers.
+
+* **Superglobals** — Superglobals are built-in variables that are always available in all scopes
+* **$GLOBALS** — References all variables available in global scope
+* **$_SERVER** — Server and execution environment information
+* **$_GET** — HTTP GET variables
+* **$_POST** — HTTP POST variables
+* **$_FILES** — HTTP File Upload variables
+* **$_REQUEST** — HTTP Request variables
+* **$_SESSION** — Session variables
+* **$_ENV** — Environment variables
+* **$_COOKIE** — HTTP Cookies
+* **$php_errormsg** — The previous error message
+* **$HTTP_RAW_POST_DATA** — Raw POST data
+* **$http_response_header** — HTTP response headers
+* **$argc** — The number of arguments passed to script
+* **$argv** — Array of arguments passed to script
+
+### Variable scope
+
+The scope of a variable is the context within which it is defined. For the most part all PHP variables only have a single scope.
+
+* **Local variables:** The variables declared within a function are called local variables to that function and has its scope only in that particular function.
+* **Global variables:** The variables declared outside a function are called global variables.
+* **Static variable:** It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as static variables.
 
 ## Data Types
 
