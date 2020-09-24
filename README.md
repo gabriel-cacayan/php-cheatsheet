@@ -89,12 +89,22 @@ The closing tag of a block of PHP code automatically implies a semicolon; you do
 
 <?php echo 'We omitted the last closing tag';
 ```
-### Variables
+## Variables
 
-**_Variables_** declaration should start with `$` follow by `_` or alphabet.
+**_Variables_** in PHP are represented by a dollar sign followed by the name of the variable. The variable name is case-sensitive.
 
 > **Important:** it is recommended to use camelcase in declaring variables to avoid errors.
 ```php
+<?php
+$var = 'Bob';
+$Var = 'Joe';
+echo "$var, $Var";      // outputs "Bob, Joe"
+
+$4site = 'not yet';     // invalid; starts with a number
+$_4site = 'not yet';    // valid; starts with an underscore
+$täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
+?>
+
 <?php
   // Concatenating String using Double Quotes.
   $firstName = "Mikasa";
@@ -115,25 +125,35 @@ PHP supports ten primitive types.
 **Four compound types:** **_array_**, **_object_**, **_callable_**, & **_iterable_**.
 
 **Special types:** **_resource_** and  **_NULL_**.
+
+Data Types | Description
+------------ | -------------
+`boolean` | A boolean expresses a truth value. It can be either TRUE or FALSE.
+`integer` | An integer is a number of the set ℤ = {..., -2, -1, 0, 1, 2, ...}.
+`float` | Floating point numbers (also known as "floats", "doubles", or "real numbers") can be specified using any of the following syntaxes:
+`string` | A string is series of characters, where a character is the same as a byte. This means that PHP only supports a 256-character set, and hence does not offer native Unicode support. 
+`array` | An array in PHP is actually an ordered map. A map is a type that associates values to keys.
+`object` |
+`callable` |
+`iterable` | Iterable is a pseudo-type introduced in PHP 7.1. It accepts any array or object implementing the Traversable interface. Both of these types are iterable using foreach and can be used with yield from within a generator.
+`resource` | A resource is a special variable, holding a reference to an external resource. Resources are created and used by special functions.
+`NUll` | The special NULL value represents a variable with no value. NULL is the only possible value of type null.
+
+
 ```php
 <?php
 $a_bool = TRUE;   // a boolean
 $a_str  = "foo";  // a string
-$a_str2 = 'foo';  // a string
 $an_int = 12;     // an integer
+$a_float = 4.1; // a float
+$an_arr = ["Gabriel", "Cacayan"]; // an array
+$a_null; // a null
+
 
 echo gettype($a_bool); // prints out:  boolean
 echo gettype($a_str);  // prints out:  string
-
-// If this is an integer, increment it by four
-if (is_int($an_int)) {
-    $an_int += 4;
-}
-
-// If $a_bool is a string, print it out
-// (does not print out anything)
-if (is_string($a_bool)) {
-    echo "String: $a_bool";
-}
-?>
+echo gettype($an_int);  // prints out:  interger
+echo gettype($a_float); // prints out: double
+echo gettype($an_arr); // prints out: array
+echo gettype($a_null); // prints out: NULL
 ```
