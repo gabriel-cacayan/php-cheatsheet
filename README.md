@@ -36,6 +36,17 @@
 - [Data Types](https://github.com/GabrielCode-Full/php-cheatsheet#data-types)
 - [Expressions](https://github.com/GabrielCode-Full/php-cheatsheet#expressions)
 - [Operators](https://github.com/GabrielCode-Full/php-cheatsheet#operators)
+- [Control Structures](https://github.com/GabrielCode-Full/php-cheatsheet#control-structures)
+  - [elseif/else if](https://github.com/GabrielCode-Full/php-cheatsheet#elseif-else-if)
+  - [ternary operator](https://github.com/GabrielCode-Full/php-cheatsheet#ternary-operator)
+  - [switch](https://github.com/GabrielCode-Full/php-cheatsheet#switch)
+  - [Alternative syntax for control structures](https://github.com/GabrielCode-Full/php-cheatsheet#alternative-syntax-for-control-structures)
+  - [for](https://github.com/GabrielCode-Full/php-cheatsheet#for)
+  - [while](https://github.com/GabrielCode-Full/php-cheatsheet#while)
+  - [do-while](https://github.com/GabrielCode-Full/php-cheatsheet#do-while)
+  - [foreach](https://github.com/GabrielCode-Full/php-cheatsheet#foreach)
+
+
 
 ### Types of installation
 * **LAMP Stack**(Linux, Apache, MySQL, and PHP)
@@ -322,3 +333,131 @@ Negation `-`|  Null Coalesce `??=` | Greater than `>` |
 
 
 > **Note:** The pipe symbol `|` is replaced by letter `l` to avoid bug in the table. 
+
+## Control Structures
+
+### elseif/else if
+
+```php
+<?php
+
+  $a = 5;
+  $b = 10;
+
+  if ($a > $b) {
+  echo "a is bigger than b";
+} else if ($a < $b) {
+  echo "b is bigger than a";
+}  else {
+  echo "Invalid Input!";
+}
+  
+?>
+```
+
+### ternary operator
+
+```php
+<?php
+ $a = 5;
+ $b = 10;
+
+echo $a > $b ? "a is greater than b": "b is greater than a";
+?>
+```
+
+### switch
+
+```php
+<?php
+
+  switch ($i) {
+    case 0:
+        echo "i equals 0";
+        break;
+    case 1:
+        echo "i equals 1";
+        break;
+    case 2:
+        echo "i equals 2";
+        break;
+}
+
+?>
+```
+
+### Alternative syntax for control structures
+
+PHP offers an alternative syntax for some of its control structures; namely, if, while, for, foreach, and switch. In each case, the basic form of the alternate syntax is to change the opening brace to a colon (:) and the closing brace to endif;, endwhile;, endfor;, endforeach;, or endswitch;, respectively.
+
+```php
+<?php
+
+  if ($a == 5):
+      echo "a equals 5";
+      echo "...";
+  elseif ($a == 6):
+      echo "a equals 6";
+      echo "!!!";
+  else:
+      echo "a is neither 5 nor 6";
+  endif;
+
+?>
+```
+
+### for
+
+```php
+<?php
+
+for ($a = 0; $a < 5; $a++) {
+  
+  echo $a . "<br>"; 
+}
+
+?>
+```
+
+### while
+
+```php
+<?php
+
+  $a = 0;
+
+while($a < 5){
+  echo $a++;
+}
+
+?>
+```
+
+### do-while
+
+```php
+<?php
+
+  $a = 0;
+
+  do {
+    echo $a++;
+} while ($a < 5);
+
+?>
+```
+
+### foreach 
+
+```php
+<?php
+  $arr = [1,2,3,4,5];
+
+
+foreach($arr as $value){
+  echo $value;
+
+}
+
+?> 
+```
