@@ -32,6 +32,7 @@
   - [Variable scope](https://github.com/GabrielCode-Full/php-cheatsheet#variable-scope)
   - [Variable variables](https://github.com/GabrielCode-Full/php-cheatsheet#variable-variables)
 - [Constants](https://github.com/GabrielCode-Full/php-cheatsheet#constants)
+  - [Magic constants](https://github.com/GabrielCode-Full/php-cheatsheet#magic-constants)
 - [Data Types](https://github.com/GabrielCode-Full/php-cheatsheet#data-types)
 
 ### Types of installation
@@ -49,11 +50,11 @@ When PHP parses a file, it looks for opening and closing tags, which are `<?php`
 ```php
 // Now php recommended you to use only two tags.
 
-# 1.Standard tag which is 
+/* 1.Standard tag which is */
 
 <?php echo "I'm Standard tag"; ?>
 
-# 2.Short echo tag which is 
+/* 2.Short echo tag which is */
 
 <?= "I'm Short echo tag"; ?>
 ```
@@ -149,8 +150,52 @@ PHP provides a large number of predefined variables to all scripts. The variable
 The scope of a variable is the context within which it is defined. For the most part all PHP variables only have a single scope.
 
 * **Local variables:** The variables declared within a function are called local variables to that function and has its scope only in that particular function.
+```php
+<?php
+ function localVariable() {
+  $greetings = "I am a local variable";
+  
+  return $greetings;
+  
+}
+
+echo localVariable(); // I am a local variable
+```
 * **Global variables:** The variables declared outside a function are called global variables.
+```php
+  global $greetings;
+  $greetings= "I am a global variable";
+
+function globalVariable() {
+  global $greetings;
+  return $greetings;
+  
+}
+
+echo globalVariable(); // I am a global variable
+```
 * **Static variable:** It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as static variables.
+```php
+function staticKeyword() {
+ static $count = 1;
+  echo $count . "<br>";
+  $count = $count + 1;
+
+}
+ staticKeyword();
+```
+
+### Variable variables
+
+Sometimes it is convenient to be able to have variable variable names. That is, a variable name which can be set and used dynamically. A normal variable is set with a statement such as:
+```php
+$name = "Gabriel Cacayan";
+$fullName = "name";
+
+echo $fullName . "<br>"; // name
+echo $$fullName; // Gabriel Cacayan
+```
+
 
 ## Constants
 
@@ -173,6 +218,24 @@ define("__FOO__", "something");
 
 ?>
 ```
+
+### Magic constants
+
+There are nine magical constants that change depending on where they are used. For example, the value of __LINE__ depends on the line that it's used on in your script. All these "magical" constants are resolved at compile time, unlike regular constants, which are resolved at runtime. These special constants are case-insensitive and are as follows:
+
+
+Magic constants | Description
+------------ | -------------
+__LINE__  | The current line number of the file.
+__FILE__  | The full path and filename of the file with symlinks resolved. If used inside an include, the name of the included file is returned.
+__DIR__ | The directory of the file. If used inside an include, the directory of the included file is returned. This is equivalent to dirname(__FILE__). This directory name does not have a trailing slash unless it is the root directory.
+__FUNCTION__  | The function name, or {closure} for anonymous functions.
+__CLASS__  | The class name. The class name includes the namespace it was declared in (e.g. Foo\Bar). Note that as of PHP 5.4 
+__CLASS__ | works also in traits. When used in a trait method, __CLASS__ is the name of the class the trait is used in.
+__TRAIT__ | The trait name. The trait name includes the namespace it was declared in (e.g. Foo\Bar).
+__METHOD__  | The class method name.
+__NAMESPACE__  | The name of the current namespace.
+
 ## Data Types
 
 PHP supports ten primitive types.
