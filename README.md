@@ -314,9 +314,9 @@ Division `/`| Division assigment`/=` | Not equal `<>` | Not `!`
 Modulo `%`| Modulo assignment `%=` | Not identical `!==` | And `&&`
 Exponentiation `**`| String Concatenation `.=` | Less than `<` | Or `ll`
 Negation `-`|  Null Coalesce `??=` | Greater than `>` |
-| Bitwise And `&=` | Less than or equal to `<=` 
-| Bitwise Or `|=` | Greater than or equal to `>=`
-| Bitwise Xor `^=` | Spaceship `<=>`
+| Bitwise And `&=` | Less than or equal to `<=` | 
+| Bitwise Or `|=` | Greater than or equal to `>=` |
+| Bitwise Xor `^=` | Spaceship `<=>` |
 | Left Shift `<<=` | 
 | Right Shift `>>=` |
  
