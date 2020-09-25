@@ -1,6 +1,6 @@
 # :fire: PHP-Cheatsheet :octocat:
 
-### PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
+**_PHP_** (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
 
 > **Example:** An introductory example
 ```php
@@ -34,6 +34,8 @@
 - [Constants](https://github.com/GabrielCode-Full/php-cheatsheet#constants)
   - [Magic constants](https://github.com/GabrielCode-Full/php-cheatsheet#magic-constants)
 - [Data Types](https://github.com/GabrielCode-Full/php-cheatsheet#data-types)
+- [Expressions](https://github.com/GabrielCode-Full/php-cheatsheet#expressions)
+- [Operators](https://github.com/GabrielCode-Full/php-cheatsheet#operators)
 
 ### Types of installation
 * **LAMP Stack**(Linux, Apache, MySQL, and PHP)
@@ -46,20 +48,22 @@
 
 ### PHP tags 
 
-When PHP parses a file, it looks for opening and closing tags, which are `<?php` and `?>` which tell PHP to start and stop interpreting the code between them. 
+When PHP parses a file, it looks for opening and closing tags, which are `<?php` and `?>` which tell PHP to start and stop interpreting the code between them.
+
 ```php
 // Now php recommended you to use only two tags.
 
-/* 1.Standard tag which is */
+//1.Standard tag which is 
 
 <?php echo "I'm Standard tag"; ?>
 
-/* 2.Short echo tag which is */
+// 2.Short echo tag which is 
 
 <?= "I'm Short echo tag"; ?>
 ```
 
 If a file contains only PHP code, it is preferable to omit the PHP closing tag at the end of the file. 
+
 ```php
 <?php
 echo "Hello world";
@@ -74,6 +78,7 @@ echo "Last statement";
 ### Escaping from HTML 
 
 Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.
+
 ```php
 <p>This is going to be ignored by PHP and displayed by the browser.</p>
 <?php echo 'While this is going to be parsed.'; ?>
@@ -87,9 +92,11 @@ Everything outside of a pair of opening and closing tags is ignored by the PHP p
   Otherwise this will show.
 <?php endif; ?>
 ```
+
 ### Instruction separation
 
 The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.
+
 ```php
 <?php
     echo 'This is a test';
@@ -99,11 +106,13 @@ The closing tag of a block of PHP code automatically implies a semicolon; you do
 
 <?php echo 'We omitted the last closing tag';
 ```
+
 ## Variables
 
 **_Variables_** in PHP are represented by a dollar sign followed by the name of the variable. The variable name is case-sensitive.
 
 > **Important:** it is recommended to use camelcase in declaring variables to avoid errors.
+
 ```php
 <?php
 $var = 'Bob';
@@ -125,9 +134,10 @@ $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
   echo $firstName . " " . $lastName; // Mikasa Ackerman
 ?>  
 ```
+
 ### Predefined Variables
 
-PHP provides a large number of predefined variables to all scripts. The variables represent everything from external variables to built-in environment variables, last error messages to last retrieved headers.
+PHP provides a large number of **_predefined variables_** to all scripts. The variables represent everything from external variables to built-in environment variables, last error messages to last retrieved headers.
 
 * **Superglobals** — Superglobals are built-in variables that are always available in all scopes
 * **$GLOBALS** — References all variables available in global scope
@@ -149,45 +159,47 @@ PHP provides a large number of predefined variables to all scripts. The variable
 
 The scope of a variable is the context within which it is defined. For the most part all PHP variables only have a single scope.
 
-* **Local variables:** The variables declared within a function are called local variables to that function and has its scope only in that particular function.
+#### Local variables: The variables declared within a function are called _local variables_ to that function and has its scope only in that particular function.
+
 ```php
 <?php
  function localVariable() {
-  $greetings = "I am a local variable";
-  
-  return $greetings;
-  
+    $greetings = "I am a local variable";
+    return $greetings;
 }
 
 echo localVariable(); // I am a local variable
 ```
-* **Global variables:** The variables declared outside a function are called global variables.
-```php
-  global $greetings;
-  $greetings= "I am a global variable";
+#### Global variables: The variables declared outside a function are called _global variables_.
 
-function globalVariable() {
-  global $greetings;
-  return $greetings;
-  
+```php
+    global $greetings;
+    $greetings= "I am a global variable";
+
+  function globalVariable() {
+    global $greetings;
+    return $greetings;
 }
 
 echo globalVariable(); // I am a global variable
 ```
-* **Static variable:** It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as static variables.
-```php
-function staticKeyword() {
- static $count = 1;
-  echo $count . "<br>";
-  $count = $count + 1;
 
-}
- staticKeyword();
+#### Static variable: It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as _static variables_.
+
+```php
+  function staticKeyword() {
+   static $count = 1;
+    echo $count . "<br>";
+    $count = $count + 1;
+
+  }
+staticKeyword();
 ```
 
 ### Variable variables
 
 Sometimes it is convenient to be able to have variable variable names. That is, a variable name which can be set and used dynamically. A normal variable is set with a statement such as:
+
 ```php
 $name = "Gabriel Cacayan";
 $fullName = "name";
@@ -199,7 +211,8 @@ echo $$fullName; // Gabriel Cacayan
 
 ## Constants
 
-A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
+A **_constant_** is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
+
 ```php
 <?php
 
@@ -221,7 +234,7 @@ define("__FOO__", "something");
 
 ### Magic constants
 
-There are nine magical constants that change depending on where they are used. For example, the value of __LINE__ depends on the line that it's used on in your script. All these "magical" constants are resolved at compile time, unlike regular constants, which are resolved at runtime. These special constants are case-insensitive and are as follows:
+There are nine **_magical constants_** that change depending on where they are used. For example, the value of __LINE__ depends on the line that it's used on in your script. All these "magical" constants are resolved at compile time, unlike regular constants, which are resolved at runtime. These special constants are case-insensitive and are as follows:
 
 
 Magic constants | Description
@@ -277,3 +290,33 @@ echo gettype($a_float); // prints out: double
 echo gettype($an_arr); // prints out: array
 echo gettype($a_null); // prints out: NULL
 ```
+
+## Expressions
+
+**_Expressions_** are evaluated into a result value or final value or single value. The simplest yet most accurate way to define an expression is "anything that has a value".
+
+```php
+$a = 5;
+$b = 10;
+
+$total = $a + $b;
+echo $total; // 15
+```
+
+## Operators
+
+Arithmetic | Assignment | Comparison | Logical |
+------------ | ------------- | ------------- |  -------------
+Addition `+`| Addition assignment `+=` | Equal `==` | And `and`
+Subtraction `-`| Subtraction assignment `-=` | Identical `===` | Or `or`
+Multiplication `*`| Multiplication assignment `*=` | Not equal `!=` | Xor `xor`
+Division `/`| Division assigment`/=` | Not equal `<>` | Not `!`
+Modulo `%`| Modulo assignment `%=` | Not identical `!==` | And `&&`
+Exponentiation `**`| String Concatenation `.=` | Less than `<` | Or `ll`
+Negation `-`|  Null Coalesce `??=` | Greater than `>` |
+| Bitwise And `&=` | Less than or equal to `<=` 
+| Bitwise Or `|=` | Greater than or equal to `>=`
+| Bitwise Xor `^=` | Spaceship `<=>`
+| Left Shift `<<=` | 
+| Right Shift `>>=` |
+ 
