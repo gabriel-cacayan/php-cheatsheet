@@ -45,6 +45,8 @@
   - [while](https://github.com/GabrielCode-Full/php-cheatsheet#while)
   - [do-while](https://github.com/GabrielCode-Full/php-cheatsheet#do-while)
   - [foreach](https://github.com/GabrielCode-Full/php-cheatsheet#foreach)
+  - [break](https://github.com/GabrielCode-Full/php-cheatsheet#break)
+  - [continue](https://github.com/GabrielCode-Full/php-cheatsheet#continue)
 
 
 
@@ -427,7 +429,8 @@ for ($a = 0; $a < 5; $a++) {
   $a = 0;
 
 while($a < 5){
-  echo $a++;
+  echo $a . "<br>";
+  $a++;
 }
 
 ?>
@@ -439,9 +442,10 @@ while($a < 5){
 <?php
 
   $a = 0;
-
+    
   do {
-    echo $a++;
+    echo $a . "<br>";
+    $a++;
 } while ($a < 5);
 
 ?>
@@ -460,4 +464,86 @@ foreach($arr as $value){
 }
 
 ?> 
+```
+
+### break
+
+```php
+<?php
+    for ($i = 0; $i < 5; $i++) {
+      if ($i === 3) {
+         break;
+       }
+       echo $i . "<br>";
+    }
+?>
+/*
+    0
+    1
+    2
+*/
+```
+
+### continue
+
+```php
+<?php
+    for ($i = 0; $i < 5; $i++) {
+  if ($i === 2) {
+      continue;
+    }
+  echo $i . "<br>";
+}
+?>
+/*
+    0
+    1
+    2
+    4
+*/
+```
+
+### include
+
+```php
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        /* 
+            1.) Including navbar file 
+            2.) Error message will occured when there is no file but, 
+            only for navbar.
+        */
+        <?php include "navbar.php"; ?>
+        <?php
+            echo "Hi, I'm a PHP script!";
+        ?>
+
+    </body>
+</html>
+```
+
+### require
+
+```php
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+         /* 
+            1.) Including navbar file 
+            2.) Error message will occured when there is no file for whole page. 
+        */
+        <?php require "navbar.php"; ?>
+        <?php
+            echo "Hi, I'm a PHP script!";
+        ?>
+
+    </body>
+</html>
 ```
