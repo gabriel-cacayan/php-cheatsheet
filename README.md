@@ -725,3 +725,58 @@ Name | Description
 
   ?>
 ```
+
+#### String Functions 
+
+Name | Description 
+------------ | ------------- 
+`echo()` | Output one or more strings
+`htmlentities()` | Convert all applicable characters to HTML entities
+`implode()` | Join array elements with a string
+`join()` | Alias of implode
+`lcfirst()` | Make a string's first character lowercase
+`ltrim()` | Strip whitespace (or other characters) from the beginning of a string
+`print()` | Output a string
+`printf()` | Output a formatted string
+`rtrim()` | Strip whitespace (or other characters) from the end of a string
+`str_ireplace()` | Case-insensitive version of str_replace
+`str_pad()` | Pad a string to a certain length with another string
+`str_repeat()` | Repeat a string
+`str_replace()` | Replace all occurrences of the search string with the replacement string
+`str_shuffle()` | Randomly shuffles a string
+`str_split()` | Convert a string to an array
+`str_word_count()` | Return information about words used in a string
+`strlen()` | Get string length
+`strpbrk()` | Search a string for any of a set of characters
+`strpos()` | Find the position of the first occurrence of a substring in a string
+`strrchr()` | Find the last occurrence of a character in a string
+`strrev()` | Reverse a string
+`strripos()` | Find the position of the last occurrence of a case-insensitive substring in a string
+`strrpos()` | Find the position of the last occurrence of a substring in a string
+`strstr()` | Find the first occurrence of a string
+`strtolower()` | Make a string lowercase
+`strtoupper()` | Make a string uppercase
+`substr()` | Return part of a string
+`trim()` | Strip whitespace (or other characters) from the beginning and end of a string
+`ucfirst()` | Make a string's first character uppercase
+`ucwords()` | Uppercase the first character of each word in a string
+
+##### Example:
+
+```php
+  <?php
+  
+  $progLan = "PHP";
+  $script = "<script>Harmful script</script>";
+  $arr = [1,2,3,4,5];
+  $longText = "I love programming because, it is fun!";
+
+  echo $progLan . "<br>"; // PHP
+  echo htmlentities($script) . "<br>"; // <script>Harmful script</script>
+  echo implode(",", $arr) . "<br>"; // 1,2,3,4,5
+  echo join("!", $arr) . "<br>"; // 1!2!3!4!5
+  echo lcfirst($longText) . "<br>"; // i love programming because, it is fun!
+
+
+  ?>
+```
