@@ -47,6 +47,13 @@
   - [foreach](https://github.com/GabrielCode-Full/php-cheatsheet#foreach)
   - [break](https://github.com/GabrielCode-Full/php-cheatsheet#break)
   - [continue](https://github.com/GabrielCode-Full/php-cheatsheet#continue)
+  - [include](https://github.com/GabrielCode-Full/php-cheatsheet#include)
+  - [require](https://github.com/GabrielCode-Full/php-cheatsheet#require)
+- [Functions](https://github.com/GabrielCode-Full/php-cheatsheet#functions)
+  - [Anonymous functions](https://github.com/GabrielCode-Full/php-cheatsheet#anonymous-functions)
+  - [Arrow functions](https://github.com/GabrielCode-Full/php-cheatsheet#arrow-functions)
+  - [Internal (built-in) functions](https://github.com/GabrielCode-Full/php-cheatsheet#internal-built-in-functions)
+    - [Variable handling](https://github.com/GabrielCode-Full/php-cheatsheet#variable-handling)
 
 
 
@@ -365,6 +372,7 @@ Negation `-`|  Null Coalesce `??=` | Greater than `>` |
  $b = 10;
 
 echo $a > $b ? "a is greater than b": "b is greater than a";
+
 ?>
 ```
 
@@ -404,6 +412,8 @@ PHP offers an alternative syntax for some of its control structures; namely, if,
   else:
       echo "a is neither 5 nor 6";
   endif;
+ 
+ // Output: a is neither 5 nor 6
 
 ?>
 ```
@@ -417,7 +427,13 @@ for ($a = 0; $a < 5; $a++) {
   
   echo $a . "<br>"; 
 }
-
+  /*
+    0
+    1
+    2
+    3
+    4
+  */
 ?>
 ```
 
@@ -432,7 +448,13 @@ while($a < 5){
   echo $a . "<br>";
   $a++;
 }
-
+  /*
+    0
+    1
+    2
+    3
+    4
+  */
 ?>
 ```
 
@@ -447,7 +469,13 @@ while($a < 5){
     echo $a . "<br>";
     $a++;
 } while ($a < 5);
-
+  /*
+    0
+    1
+    2
+    3
+    4
+  */
 ?>
 ```
 
@@ -459,10 +487,10 @@ while($a < 5){
 
 
 foreach($arr as $value){
-  echo $value;
+  echo $value; 
 
 }
-
+ // Output: 12345
 ?> 
 ```
 
@@ -476,12 +504,13 @@ foreach($arr as $value){
        }
        echo $i . "<br>";
     }
-?>
-/*
+
+  /*
     0
     1
     2
-*/
+  */
+?>
 ```
 
 ### continue
@@ -494,13 +523,13 @@ foreach($arr as $value){
     }
   echo $i . "<br>";
 }
+  /*
+      0
+      1
+      2
+      4
+  */
 ?>
-/*
-    0
-    1
-    2
-    4
-*/
 ```
 
 ### include
@@ -547,3 +576,93 @@ foreach($arr as $value){
     </body>
 </html>
 ```
+
+## Functions
+
+function with default arguments.
+
+```php
+<?php
+  
+     function add($a = 0, $b = 0) {
+      return $a + $b;
+    }
+
+
+  echo add(10,5); // 15
+  echo add(); // 0
+
+?>
+```
+
+### Anonymous functions
+
+**_Anonymous functions_**, also known as **closures**, allow the creation of functions which have no specified name. They are most useful as the value of callback parameters, but they have many other uses.
+
+```php
+<?php
+  
+  $add = function($a = 0, $b = 0) {
+      return $a + $b;
+    };
+
+
+echo $add(10,5);  // 15
+?>
+```
+
+```php
+<?php
+  //global variable
+  $ten = 10;
+
+  $add = function($a) use ($ten){
+        return $a + $ten;
+      };
+
+
+  echo $add(10); // 20  
+
+?>
+```
+
+### Arrow Functions
+
+Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymous functions.
+
+```php
+<?php
+
+   $fn = fn($x, $y) => $x + $y;
+ 
+  echo $fn(10,5); // 15
+
+?>
+```
+
+### Internal (built-in) functions
+
+#### Variable handling 
+
+Name | Description 
+------------ | ------------- 
+`empty` | Determine whether a variable is empty
+`ettype` | Get the type of a variable
+`is_array` | Finds whether a variable is an array
+`is_bool`| Finds out whether a variable is a boolean
+`is_double` | Alias of is_float
+`is_float` | Finds whether the type of a variable is float
+`is_int` | Find whether the type of a variable is integer
+`is_integer` | Alias of is_int
+`is_long` | Alias of is_int
+`is_null` | Finds whether a variable is NULL
+`is_numeric` | Finds whether a variable is a number or a numeric string
+`is_object` | Finds whether a variable is an object
+`is_real` | Alias of is_float
+`is_scalar` | Finds whether a variable is a scalar
+`is_string` | Find whether the type of a variable is string
+`isset` | Determine if a variable is declared and is different than NULL
+`print_r` | Prints human-readable information about a variable
+`settype` | Set the type of a variable
+`unset` | Unset a given variable
+`var_dump` | Dumps information about a variable
