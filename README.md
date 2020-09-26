@@ -207,13 +207,33 @@ echo globalVariable(); // I am a global variable
 #### Static variable: It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as _static variables_.
 
 ```php
-  function staticKeyword() {
+  // Without static keyword
+function staticKeyword() {
+    $count = 1;
+    echo $count . "<br>";
+    $count = $count + 1;
+
+}
+
+staticKeyword(); // 1
+staticKeyword(); // 1
+staticKeyword(); // 1
+staticKeyword(); // 1
+staticKeyword(); // 1
+
+// With static keyword
+function staticKeyword() {
    static $count = 1;
     echo $count . "<br>";
     $count = $count + 1;
 
-  }
-staticKeyword();
+}
+
+staticKeyword(); // 1
+staticKeyword(); // 2
+staticKeyword(); // 3
+staticKeyword(); // 4
+staticKeyword(); // 5
 ```
 
 ### Variable variables
