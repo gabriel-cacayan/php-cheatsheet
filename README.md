@@ -647,7 +647,7 @@ Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymou
 Name | Description 
 ------------ | ------------- 
 `empty` | Determine whether a variable is empty
-`ettype` | Get the type of a variable
+`gettype` | Get the type of a variable
 `is_array` | Finds whether a variable is an array
 `is_bool`| Finds out whether a variable is a boolean
 `is_double` | Alias of is_float
@@ -666,3 +666,42 @@ Name | Description
 `settype` | Set the type of a variable
 `unset` | Unset a given variable
 `var_dump` | Dumps information about a variable
+
+##### Example:
+
+```php
+<?php
+
+  $progLan = "PHP";
+  $number = 1.25;
+  $boolean = true;
+  $arr = [1,2,3,4,5];
+  $anInteger = 10;
+
+  // Check whether the variable has value or none.
+  var_dump(empty($progLan)) . "<br>"; // bool(false)
+  var_dump(isset($progLan)) . "<br>"; // bool(true)
+
+  // Check the Data type of the variable.
+  echo gettype($progLan) . "<br>"; // string
+  var_dump(is_array($arr)) . "<br>"; // bool(true)
+  var_dump(is_bool($boolean)) . "<br>"; // bool(true)
+  var_dump(is_double($number)) . "<br>"; // bool(true)
+  var_dump(is_float($number)) . "<br>"; // bool(true)
+  var_dump(is_int($number)) . "<br>"; // bool(false)
+  var_dump(is_integer($anInteger)) . "<br>"; // bool(true)
+  var_dump(is_long($number)) . "<br>"; // bool(false)
+  var_dump(is_null($number)) . "<br>"; // bool(false)
+  var_dump(is_numeric($number)) . "<br>"; // bool(true)
+  var_dump(is_object($arr)) . "<br>"; // bool(false)
+  var_dump(is_real($number)) . "<br>"; // bool(true)
+  var_dump(is_scalar($progLan)) . "<br>"; // bool(true)
+  var_dump(is_string($progLan)) . "<br>"; // bool(true)
+  
+
+  // Displaying variable's value
+  print_r($number); // 1.25
+  var_dump(10); // int(10)
+
+  ?>
+```
