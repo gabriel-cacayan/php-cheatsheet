@@ -767,12 +767,13 @@ Name | Description
 ```php
   <?php
   
-  $progLan = "PHP";
+$progLan = "PHP";
 $script = "<script>Harmful script</script>";
 $arr = [1,2,3,4,5];
 $longText = "I love programming because, it is fun!";
 $vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 
+echo htmlentities("<script></script>"); // &lt;script&gt;&lt;/script&gt;
 echo str_pad("Hello", 10, "!!", STR_PAD_BOTH) . "<br>";  // !!Hello!!!
 echo str_repeat("love", 5) . "<br>"; // lovelovelovelovelove
 print_r(str_split($longText)) . "<br>"; //
