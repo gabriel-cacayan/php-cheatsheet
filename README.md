@@ -54,6 +54,7 @@
   - [Arrow functions](https://github.com/GabrielCode-Full/php-cheatsheet#arrow-functions)
   - [Internal (built-in) functions](https://github.com/GabrielCode-Full/php-cheatsheet#internal-built-in-functions)
     - [Variable handling](https://github.com/GabrielCode-Full/php-cheatsheet#variable-handling)
+    - [String Functions](https://github.com/GabrielCode-Full/php-cheatsheet#string-functions)
 
 
 
@@ -767,16 +768,79 @@ Name | Description
   <?php
   
   $progLan = "PHP";
-  $script = "<script>Harmful script</script>";
-  $arr = [1,2,3,4,5];
-  $longText = "I love programming because, it is fun!";
+$script = "<script>Harmful script</script>";
+$arr = [1,2,3,4,5];
+$longText = "I love programming because, it is fun!";
+$vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 
-  echo $progLan . "<br>"; // PHP
-  echo htmlentities($script) . "<br>"; // <script>Harmful script</script>
-  echo implode(",", $arr) . "<br>"; // 1,2,3,4,5
-  echo join("!", $arr) . "<br>"; // 1!2!3!4!5
-  echo lcfirst($longText) . "<br>"; // i love programming because, it is fun!
+echo str_pad("Hello", 10, "!!", STR_PAD_BOTH) . "<br>";  // !!Hello!!!
+echo str_repeat("love", 5) . "<br>"; // lovelovelovelovelove
+print_r(str_split($longText)) . "<br>"; //
+echo strpbrk($longText, "f") . "<br>"; // fun!
+echo strpos($longText, "love") . "<br>"; // 2
 
+// Outputing string in different format.
+print ("Hello, World!") . "<br>"; // Hello, World!
+printf ("The PHP is cool!") . "<br>"; // The PHP is cool!
+
+// Finding the first occurrence of a string.
+echo strstr($longText, "m") . "<br>"; // mming because, it is fun
+
+//  Finding the last occurrence of a string that is case sensitive and not.
+echo strripos($longText, "M") . "<br>"; // 14
+echo strrpos($longText, "m") . "<br>"; // 14
+echo strrchr($longText, "m") . "<br>"; // ming because, it is fun!
+
+// Reverse or Shuffle the string
+echo str_shuffle($longText) . "<br>"; //f lrumIbnige   ot u,e g raiievsmcas!npo<br>
+echo strrev($longText) . "<br>"; // !nuf si ti ,esuaceb gnimmargorp evol I
+
+// Slicing the string
+echo substr($longText, 2, 4) . "<br>"; // love
+
+// Returns a replaced word.
+echo $bodytag = str_ireplace("%body%", "black", "<body text=%BODY%>") . "<br>"; // <body text=black>
+echo str_replace($vowels, "", $longText) . "<br>"; //  lv prgrmmng bcs, t s fn!
+
+// Returns the length of a string.
+echo strlen($longText) . "<br>"; // 38
+echo str_word_count($longText) . "<br>"; // 7
+
+// Changing the text to upper or lower case.
+echo ucfirst($longText) . "<br>"; // I love programming because, it is fun!
+echo ucwords($longText) . "<br>"; // I Love Programming Because, It Is Fun!
+echo strtolower($longText) . "<br>"; // i love programming because, it is fun!
+echo strtoupper($longText) . "<br>"; // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
+
+// Returns removed whitespaces
+echo ltrim("             Hello, World!") . "<br>"; // Hello, World!
+echo rtrim("Text with whitespace!                   "); // Text with whitespace!
+echo trim(" Text with whitespace.       ") . "<br>"; // Text with whitespace.
+  ?>
+```
+
+#### Array Functions 
+
+Name | Description 
+------------ | ------------- 
+`array_filter()` | Filters elements of an array using a callback function
+`array_map()` | Applies the callback to the elements of the given arrays
+`array_reduce()` | Iteratively reduce the array to a single value using a callback function
+`array_reverse()` | Return an array with elements in reverse order
+`array_push()` | Push one or more elements onto the end of array
+`array_pop()` | Pop the element off the end of array
+`array_shift()` | Shift an element off the beginning of array
+`array_unshift()` | Prepend one or more elements to the beginning of an array
+`array_replace()` | Replaces elements from passed arrays into the first array
+`array_slice()` | Extract a slice of the array
+`array_splice()` | Remove a portion of the array and replace it with something else
+`array_search()` | Searches the array for a given value and returns the first corresponding key if successful
+`array_key_exists()` | Checks if the given key or index exists in the array
+
+##### Example:
+
+```php
+  <?php
 
   ?>
 ```
