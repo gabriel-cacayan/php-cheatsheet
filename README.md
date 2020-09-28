@@ -1,25 +1,5 @@
 # :fire: PHP-Cheatsheet :octocat:
 
-**PHP** (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
-
-> **Example:** An introductory example
-```php
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-
-        <?php
-            echo "Hi, I'm a PHP script!";
-        ?>
-
-    </body>
-</html>
-```
-
-
 # Table of Contents
 - [Introduction](https://github.com/GabrielCode-Full/php-cheatsheet#fire-php-cheatsheet-octocat)
   - [Types of installation](https://github.com/GabrielCode-Full/php-cheatsheet#types-of-installation)
@@ -58,6 +38,24 @@
     - [Array Functions](https://github.com/GabrielCode-Full/php-cheatsheet#array-functions)
 
 
+**PHP** (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
+
+> **Example:** An introductory example
+```php
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+
+        <?php
+            echo "Hi, I'm a PHP script!";
+        ?>
+
+    </body>
+</html>
+```
 
 ### Types of installation
 * **LAMP Stack**(Linux, Apache, MySQL, and PHP)
@@ -73,28 +71,22 @@
 When PHP parses a file, it looks for opening and closing tags, which are `<?php` and `?>` which tell PHP to start and stop interpreting the code between them.
 
 ```php
-// Now php recommended you to use only two tags.
+  <?php echo "I'm Standard tag"; ?>
 
-//1.Standard tag which is 
-
-<?php echo "I'm Standard tag"; ?>
-
-// 2.Short echo tag which is 
-
-<?= "I'm Short echo tag"; ?>
+  <?= "I'm Short echo tag"; ?>
 ```
 
 If a file contains only PHP code, it is preferable to omit the PHP closing tag at the end of the file. 
 
 ```php
-<?php
-echo "Hello world";
+  <?php
+  echo "Hello world";
 
-// ... more code
+  // ... more code
 
-echo "Last statement";
+  echo "Last statement";
 
-// the script ends here with no PHP closing tag
+  // the script ends here with no PHP closing tag
 ```
 
 ### Escaping from HTML 
@@ -102,17 +94,17 @@ echo "Last statement";
 Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.
 
 ```php
-<p>This is going to be ignored by PHP and displayed by the browser.</p>
-<?php echo 'While this is going to be parsed.'; ?>
-<p>This will also be ignored by PHP and displayed by the browser.</p>
+  <p>This is going to be ignored by PHP and displayed by the browser.</p>
+  <?php echo 'While this is going to be parsed.'; ?>
+  <p>This will also be ignored by PHP and displayed by the browser.</p>
 
 
-// Example #1 Advanced escaping using conditions
-<?php if ($expression == true): ?>
-  This will show if the expression is true.
-<?php else: ?>
-  Otherwise this will show.
-<?php endif; ?>
+  // Example #1 Advanced escaping using conditions
+  <?php if ($expression == true): ?>
+    This will show if the expression is true.
+  <?php else: ?>
+    Otherwise this will show.
+  <?php endif; ?>
 ```
 
 ### Instruction separation
@@ -120,13 +112,13 @@ Everything outside of a pair of opening and closing tags is ignored by the PHP p
 The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.
 
 ```php
-<?php
-    echo 'This is a test';
-?>
+  <?php
+      echo 'This is a test';
+  ?>
 
-<?php echo 'This is a test' ?>
+  <?php echo 'This is a test' ?>
 
-<?php echo 'We omitted the last closing tag';
+  <?php echo 'We omitted the last closing tag';
 ```
 
 ## Variables
@@ -136,25 +128,24 @@ The closing tag of a block of PHP code automatically implies a semicolon; you do
 > **Important:** it is recommended to use camelcase in declaring variables to avoid errors.
 
 ```php
-<?php
-$var = 'Bob';
-$Var = 'Joe';
-echo "$var, $Var";      // outputs "Bob, Joe"
+  <?php
+  $var = 'Bob';
+  $Var = 'Joe';
+  echo "$var, $Var";      // outputs "Bob, Joe"
 
-$4site = 'not yet';     // invalid; starts with a number
-$_4site = 'not yet';    // valid; starts with an underscore
-$täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
-?>
+  $4site = 'not yet';     // invalid; starts with a number
+  $_4site = 'not yet';    // valid; starts with an underscore
+  $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
+  ?>
 
-<?php
+  <?php
   // Concatenating String using Double Quotes.
   $firstName = "Mikasa";
   $lastName = "Ackerman";
   echo "$firstName $lastName"; // Mikasa Ackerman
-  
+    
   // Concatenating String using dot.
-  echo $firstName . " " . $lastName; // Mikasa Ackerman
-?>  
+  echo $firstName . " " . $lastName; // Mikasa Ackerman  
 ```
 
 ### Predefined Variables
@@ -195,13 +186,14 @@ echo localVariable(); // I am a local variable
 #### Global variables: The variables declared outside a function are called _global variables_.
 
 ```php
+<?php
     global $greetings;
     $greetings= "I am a global variable";
 
   function globalVariable() {
     global $greetings;
     return $greetings;
-}
+  }
 
 echo globalVariable(); // I am a global variable
 ```
@@ -209,33 +201,34 @@ echo globalVariable(); // I am a global variable
 #### Static variable: It is the characteristic of PHP to delete the variable, ones it completes its execution and the memory is freed. But sometimes we need to store the variables even after the completion of function execution. To do this we use static keyword and the variables are then called as _static variables_.
 
 ```php
+<?php
   // Without static keyword
-function staticKeyword() {
-    $count = 1;
-    echo $count . "<br>";
-    $count = $count + 1;
+  function staticKeyword() {
+      $count = 1;
+      echo $count . "<br>";
+      $count = $count + 1;
 
-}
+  }
 
-staticKeyword(); // 1
-staticKeyword(); // 1
-staticKeyword(); // 1
-staticKeyword(); // 1
-staticKeyword(); // 1
+  staticKeyword(); // 1
+  staticKeyword(); // 1
+  staticKeyword(); // 1
+  staticKeyword(); // 1
+  staticKeyword(); // 1
 
-// With static keyword
-function staticKeyword() {
-   static $count = 1;
-    echo $count . "<br>";
-    $count = $count + 1;
+  // With static keyword
+  function staticKeyword() {
+     static $count = 1;
+      echo $count . "<br>";
+      $count = $count + 1;
 
-}
+  }
 
-staticKeyword(); // 1
-staticKeyword(); // 2
-staticKeyword(); // 3
-staticKeyword(); // 4
-staticKeyword(); // 5
+  staticKeyword(); // 1
+  staticKeyword(); // 2
+  staticKeyword(); // 3
+  staticKeyword(); // 4
+  staticKeyword(); // 5
 ```
 
 ### Variable variables
@@ -243,11 +236,12 @@ staticKeyword(); // 5
 Sometimes it is convenient to be able to have variable variable names. That is, a variable name which can be set and used dynamically. A normal variable is set with a statement such as:
 
 ```php
-$name = "Gabriel Cacayan";
-$fullName = "name";
+<?php
+  $name = "Gabriel Cacayan";
+  $fullName = "name";
 
-echo $fullName . "<br>"; // name
-echo $$fullName; // Gabriel Cacayan
+  echo $fullName . "<br>"; // name
+  echo $$fullName; // Gabriel Cacayan
 ```
 
 
@@ -258,20 +252,18 @@ A **_constant_** is an identifier (name) for a simple value. As the name suggest
 ```php
 <?php
 
-// Valid constant names
-define("FOO",     "something");
-define("FOO2",    "something else");
-define("FOO_BAR", "something more");
+  // Valid constant names
+  define("FOO",     "something");
+  define("FOO2",    "something else");
+  define("FOO_BAR", "something more");
 
-// Invalid constant names
-define("2FOO",    "something");
+  // Invalid constant names
+  define("2FOO",    "something");
 
-// This is valid, but should be avoided:
-// PHP may one day provide a magical constant
-// that will break your script
-define("__FOO__", "something"); 
-
-?>
+  // This is valid, but should be avoided:
+  // PHP may one day provide a magical constant
+  // that will break your script
+  define("__FOO__", "something"); 
 ```
 
 ### Magic constants
@@ -317,20 +309,20 @@ Data Types | Description
 
 ```php
 <?php
-$a_bool = TRUE;   // a boolean
-$a_str  = "foo";  // a string
-$an_int = 12;     // an integer
-$a_float = 4.1; // a float
-$an_arr = ["Gabriel", "Cacayan"]; // an array
-$a_null; // a null
+  $a_bool = TRUE;   // a boolean
+  $a_str  = "foo";  // a string
+  $an_int = 12;     // an integer
+  $a_float = 4.1; // a float
+  $an_arr = ["Gabriel", "Cacayan"]; // an array
+  $a_null; // a null
 
 
-echo gettype($a_bool); // prints out:  boolean
-echo gettype($a_str);  // prints out:  string
-echo gettype($an_int);  // prints out:  interger
-echo gettype($a_float); // prints out: double
-echo gettype($an_arr); // prints out: array
-echo gettype($a_null); // prints out: NULL
+  echo gettype($a_bool); // prints out:  boolean
+  echo gettype($a_str);  // prints out:  string
+  echo gettype($an_int);  // prints out:  interger
+  echo gettype($a_float); // prints out: double
+  echo gettype($an_arr); // prints out: array
+  echo gettype($a_null); // prints out: NULL
 ```
 
 ## Expressions
@@ -338,11 +330,12 @@ echo gettype($a_null); // prints out: NULL
 **_Expressions_** are evaluated into a result value or final value or single value. The simplest yet most accurate way to define an expression is "anything that has a value".
 
 ```php
-$a = 5;
-$b = 10;
+<?php
+  $a = 5;
+  $b = 10;
 
-$total = $a + $b;
-echo $total; // 15
+  $total = $a + $b;
+  echo $total; // 15
 ```
 
 ## Operators
@@ -372,30 +365,28 @@ Negation `-`|  Null Coalesce `??=` | Greater than `>` |
 ```php
 <?php
 
-  $a = 5;
-  $b = 10;
+    $a = 5;
+    $b = 10;
 
-  if ($a > $b) {
-  echo "a is bigger than b";
-} else if ($a < $b) {
-  echo "b is bigger than a";
-}  else {
-  echo "Invalid Input!";
-}
+    if ($a > $b) {
+    echo "a is bigger than b";
+  } else if ($a < $b) {
+    echo "b is bigger than a";
+  }  else {
+    echo "Invalid Input!";
+  }
   
-?>
+  ?>
 ```
 
 ### ternary operator
 
 ```php
 <?php
- $a = 5;
- $b = 10;
+   $a = 5;
+   $b = 10;
 
-echo $a > $b ? "a is greater than b": "b is greater than a";
-
-?>
+  echo $a > $b ? "a is greater than b": "b is greater than a";
 ```
 
 ### switch
@@ -403,19 +394,19 @@ echo $a > $b ? "a is greater than b": "b is greater than a";
 ```php
 <?php
 
-  switch ($i) {
-    case 0:
-        echo "i equals 0";
-        break;
-    case 1:
-        echo "i equals 1";
-        break;
-    case 2:
-        echo "i equals 2";
-        break;
-}
+    switch ($i) {
+      case 0:
+          echo "i equals 0";
+          break;
+      case 1:
+          echo "i equals 1";
+          break;
+      case 2:
+          echo "i equals 2";
+          break;
+  }
 
-?>
+  ?>
 ```
 
 ### Alternative syntax for control structures
@@ -434,10 +425,6 @@ PHP offers an alternative syntax for some of its control structures; namely, if,
   else:
       echo "a is neither 5 nor 6";
   endif;
- 
- // Output: a is neither 5 nor 6
-
-?>
 ```
 
 ### for
@@ -445,17 +432,11 @@ PHP offers an alternative syntax for some of its control structures; namely, if,
 ```php
 <?php
 
-for ($a = 0; $a < 5; $a++) {
-  
-  echo $a . "<br>"; 
-}
-  /*
-    0
-    1
-    2
-    3
-    4
-  */
+  for ($a = 0; $a < 5; $a++) {
+    
+    echo $a . "<br>"; 
+  }
+ 
 ?>
 ```
 
@@ -466,17 +447,11 @@ for ($a = 0; $a < 5; $a++) {
 
   $a = 0;
 
-while($a < 5){
-  echo $a . "<br>";
-  $a++;
-}
-  /*
-    0
-    1
-    2
-    3
-    4
-  */
+  while($a < 5){
+    echo $a . "<br>";
+    $a++;
+  }
+ 
 ?>
 ```
 
@@ -485,19 +460,13 @@ while($a < 5){
 ```php
 <?php
 
-  $a = 0;
-    
-  do {
-    echo $a . "<br>";
-    $a++;
-} while ($a < 5);
-  /*
-    0
-    1
-    2
-    3
-    4
-  */
+    $a = 0;
+      
+    do {
+      echo $a . "<br>";
+      $a++;
+  } while ($a < 5);
+ 
 ?>
 ```
 
@@ -505,14 +474,15 @@ while($a < 5){
 
 ```php
 <?php
+
   $arr = [1,2,3,4,5];
 
 
-foreach($arr as $value){
-  echo $value; 
+  foreach($arr as $value){
+    echo $value; 
 
-}
- // Output: 12345
+  }
+
 ?> 
 ```
 
@@ -526,12 +496,6 @@ foreach($arr as $value){
        }
        echo $i . "<br>";
     }
-
-  /*
-    0
-    1
-    2
-  */
 ?>
 ```
 
@@ -540,17 +504,12 @@ foreach($arr as $value){
 ```php
 <?php
     for ($i = 0; $i < 5; $i++) {
-  if ($i === 2) {
-      continue;
-    }
-  echo $i . "<br>";
-}
-  /*
-      0
-      1
-      2
-      4
-  */
+      if ($i === 2) {
+          continue;
+      }
+    echo $i . "<br>";
+  }
+
 ?>
 ```
 
@@ -613,8 +572,6 @@ function with default arguments.
 
   echo add(10,5); // 15
   echo add(); // 0
-
-?>
 ```
 
 ### Anonymous functions
@@ -658,8 +615,6 @@ Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymou
    $fn = fn($x, $y) => $x + $y;
  
   echo $fn(10,5); // 15
-
-?>
 ```
 
 ### Internal (built-in) functions
@@ -726,8 +681,6 @@ Name | Description
   // Displaying variable's value
   print_r($number); // 1.25
   var_dump(10); // int(10)
-
-  ?>
 ```
 
 #### String Functions 
@@ -772,57 +725,57 @@ Name | Description
 ```php
 <?php
 
-$progLan = "PHP";
-$script = "<script>Harmful script</script>";
-$arr = [1,2,3,4,5];
-$longText = "I love programming because, it is fun!";
-$vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  $progLan = "PHP";
+  $script = "<script>Harmful script</script>";
+  $arr = [1,2,3,4,5];
+  $longText = "I love programming because, it is fun!";
+  $vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 
-printf("entities: %s <br>", htmlentities($script)); // &lt;script&gt;Harmful script&lt;/script&gt;
-printf("pad: %s <br>", str_pad("Hello", 10, "!!", STR_PAD_BOTH));  // !!Hello!!!
-printf("repeat: %s <br>", str_repeat("love", 5)); // lovelovelovelovelove
-print_r(str_split($progLan)); // Array ( [0] => P [1] => H [2] => P )
-echo "<br>";
-printf("search: %s <br>",strpbrk($longText, "f")); // fun!
-printf("pos: %d <br>",strpos($longText, "love")); // 2
+  printf("entities: %s <br>", htmlentities($script)); // &lt;script&gt;Harmful script&lt;/script&gt;
+  printf("pad: %s <br>", str_pad("Hello", 10, "!!", STR_PAD_BOTH));  // !!Hello!!!
+  printf("repeat: %s <br>", str_repeat("love", 5)); // lovelovelovelovelove
+  print_r(str_split($progLan)); // Array ( [0] => P [1] => H [2] => P )
+  echo "<br>";
+  printf("search: %s <br>",strpbrk($longText, "f")); // fun!
+  printf("pos: %d <br>",strpos($longText, "love")); // 2
 
-// Outputing string in different format.
-print ("print: Hello, World!") . "<br>"; // Hello, World!
-printf ("printf: %s <br>", $progLan); // The PHP is cool!
+  // Outputing string in different format.
+  print ("print: Hello, World!") . "<br>"; // Hello, World!
+  printf ("printf: %s <br>", $progLan); // The PHP is cool!
 
-// Finding the first occurrence of a string.
-printf("firstOcc: %s <br>",strstr($longText, "m")); // mming because, it is fun
+  // Finding the first occurrence of a string.
+  printf("firstOcc: %s <br>",strstr($longText, "m")); // mming because, it is fun
 
-//  Finding the last occurrence of a string that is case sensitive and not.
-printf("lastiOcc: %d <br>",strripos($longText, "M")); // 14
-printf("lastOcc: %d <br>",strrpos($longText, "m")); // 14
-printf("lastOccu2: %s <br>",strrchr($longText, "m")); // ming because, it is fun!
+  //  Finding the last occurrence of a string that is case sensitive and not.
+  printf("lastiOcc: %d <br>",strripos($longText, "M")); // 14
+  printf("lastOcc: %d <br>",strrpos($longText, "m")); // 14
+  printf("lastOccu2: %s <br>",strrchr($longText, "m")); // ming because, it is fun!
 
-// Reverse or Shuffle the string
-printf("shuffle: %s <br>", str_shuffle($longText)); // random text
-printf("reverse: %s <br>", strrev($longText)); // !nuf si ti ,esuaceb gnimmargorp evol I
+  // Reverse or Shuffle the string
+  printf("shuffle: %s <br>", str_shuffle($longText)); // random text
+  printf("reverse: %s <br>", strrev($longText)); // !nuf si ti ,esuaceb gnimmargorp evol I
 
-// Slicing the string
-printf("slice: %s <br>",substr($longText, 2, 4)); // love
+  // Slicing the string
+  printf("slice: %s <br>",substr($longText, 2, 4)); // love
 
-// Returns a replaced word.
-printf("iReplace: %s <br>",str_ireplace("%body%", "black", "<body text=%BODY%>")); // <body text=black>
-printf("replace: %s <br>",str_replace($vowels, "", $longText)); //  lv prgrmmng bcs, t s fn!
+  // Returns a replaced word.
+  printf("iReplace: %s <br>",str_ireplace("%body%", "black", "<body text=%BODY%>")); // <body text=black>
+  printf("replace: %s <br>",str_replace($vowels, "", $longText)); //  lv prgrmmng bcs, t s fn!
 
-// Returns the length of a string.
-printf("length: %d <br>", strlen($longText)); // 38
-printf("word count: %d <br>", str_word_count($longText)); // 7
+  // Returns the length of a string.
+  printf("length: %d <br>", strlen($longText)); // 38
+  printf("word count: %d <br>", str_word_count($longText)); // 7
 
-// Changing the text to upper or lower case.
-printf("upperFirst: %s <br>" ,ucfirst($longText)); // I love programming because, it is fun!
-printf("upperWords: %s <br>", ucwords($longText)); // I Love Programming Because, It Is Fun!
-printf("toLower: %s <br>", strtolower($longText)); // i love programming because, it is fun!
-printf("toUpper: %s <br>", strtoupper($longText)); // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
+  // Changing the text to upper or lower case.
+  printf("upperFirst: %s <br>" ,ucfirst($longText)); // I love programming because, it is fun!
+  printf("upperWords: %s <br>", ucwords($longText)); // I Love Programming Because, It Is Fun!
+  printf("toLower: %s <br>", strtolower($longText)); // i love programming because, it is fun!
+  printf("toUpper: %s <br>", strtoupper($longText)); // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
 
-// Returns removed whitespaces
-printf("leftTrim: %s <br>", ltrim("             Hello, World!")); // Hello, World!
-printf("rightTrim: %s <br>", rtrim("Text with whitespace!              ")); // Text with whitespace!
-printf("trim: %s <br>", trim(" Text with whitespace.       ")); // Text with whitespace.
+  // Returns removed whitespaces
+  printf("leftTrim: %s <br>", ltrim("             Hello, World!")); // Hello, World!
+  printf("rightTrim: %s <br>", rtrim("Text with whitespace!              ")); // Text with whitespace!
+  printf("trim: %s <br>", trim(" Text with whitespace.       ")); // Text with whitespace.
 ```
 
 #### Array Functions 
@@ -850,5 +803,4 @@ Name | Description
 ```php
   <?php
 
-  ?>
 ```
