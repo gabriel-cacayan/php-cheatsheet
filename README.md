@@ -55,6 +55,7 @@
   - [Internal (built-in) functions](https://github.com/GabrielCode-Full/php-cheatsheet#internal-built-in-functions)
     - [Variable handling](https://github.com/GabrielCode-Full/php-cheatsheet#variable-handling)
     - [String Functions](https://github.com/GabrielCode-Full/php-cheatsheet#string-functions)
+    - [Array Functions](https://github.com/GabrielCode-Full/php-cheatsheet#array-functions)
 
 
 
@@ -688,6 +689,8 @@ Name | Description
 `unset` | Unset a given variable
 `var_dump` | Dumps information about a variable
 
+[Reference](https://www.php.net/manual/en/book.var.php)
+
 ##### Example:
 
 ```php
@@ -762,62 +765,64 @@ Name | Description
 `ucfirst()` | Make a string's first character uppercase
 `ucwords()` | Uppercase the first character of each word in a string
 
+[Reference](https://www.php.net/manual/en/book.strings.php)
+
 ##### Example:
 
 ```php
-  <?php
-  
+<?php
+
 $progLan = "PHP";
 $script = "<script>Harmful script</script>";
 $arr = [1,2,3,4,5];
 $longText = "I love programming because, it is fun!";
 $vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 
-echo htmlentities("<script></script>"); // &lt;script&gt;&lt;/script&gt;
-echo str_pad("Hello", 10, "!!", STR_PAD_BOTH) . "<br>";  // !!Hello!!!
-echo str_repeat("love", 5) . "<br>"; // lovelovelovelovelove
-print_r(str_split($longText)) . "<br>"; //
-echo strpbrk($longText, "f") . "<br>"; // fun!
-echo strpos($longText, "love") . "<br>"; // 2
+printf("entities: %s <br>", htmlentities($script)); // &lt;script&gt;Harmful script&lt;/script&gt;
+printf("pad: %s <br>", str_pad("Hello", 10, "!!", STR_PAD_BOTH));  // !!Hello!!!
+printf("repeat: %s <br>", str_repeat("love", 5)); // lovelovelovelovelove
+print_r(str_split($progLan)); // Array ( [0] => P [1] => H [2] => P )
+echo "<br>";
+printf("search: %s <br>",strpbrk($longText, "f")); // fun!
+printf("pos: %d <br>",strpos($longText, "love")); // 2
 
 // Outputing string in different format.
-print ("Hello, World!") . "<br>"; // Hello, World!
-printf ("The PHP is cool!") . "<br>"; // The PHP is cool!
+print ("print: Hello, World!") . "<br>"; // Hello, World!
+printf ("printf: %s <br>", $progLan); // The PHP is cool!
 
 // Finding the first occurrence of a string.
-echo strstr($longText, "m") . "<br>"; // mming because, it is fun
+printf("firstOcc: %s <br>",strstr($longText, "m")); // mming because, it is fun
 
 //  Finding the last occurrence of a string that is case sensitive and not.
-echo strripos($longText, "M") . "<br>"; // 14
-echo strrpos($longText, "m") . "<br>"; // 14
-echo strrchr($longText, "m") . "<br>"; // ming because, it is fun!
+printf("lastiOcc: %d <br>",strripos($longText, "M")); // 14
+printf("lastOcc: %d <br>",strrpos($longText, "m")); // 14
+printf("lastOccu2: %s <br>",strrchr($longText, "m")); // ming because, it is fun!
 
 // Reverse or Shuffle the string
-echo str_shuffle($longText) . "<br>"; //f lrumIbnige   ot u,e g raiievsmcas!npo<br>
-echo strrev($longText) . "<br>"; // !nuf si ti ,esuaceb gnimmargorp evol I
+printf("shuffle: %s <br>", str_shuffle($longText)); // random text
+printf("reverse: %s <br>", strrev($longText)); // !nuf si ti ,esuaceb gnimmargorp evol I
 
 // Slicing the string
-echo substr($longText, 2, 4) . "<br>"; // love
+printf("slice: %s <br>",substr($longText, 2, 4)); // love
 
 // Returns a replaced word.
-echo $bodytag = str_ireplace("%body%", "black", "<body text=%BODY%>") . "<br>"; // <body text=black>
-echo str_replace($vowels, "", $longText) . "<br>"; //  lv prgrmmng bcs, t s fn!
+printf("iReplace: %s <br>",str_ireplace("%body%", "black", "<body text=%BODY%>")); // <body text=black>
+printf("replace: %s <br>",str_replace($vowels, "", $longText)); //  lv prgrmmng bcs, t s fn!
 
 // Returns the length of a string.
-echo strlen($longText) . "<br>"; // 38
-echo str_word_count($longText) . "<br>"; // 7
+printf("length: %d <br>", strlen($longText)); // 38
+printf("word count: %d <br>", str_word_count($longText)); // 7
 
 // Changing the text to upper or lower case.
-echo ucfirst($longText) . "<br>"; // I love programming because, it is fun!
-echo ucwords($longText) . "<br>"; // I Love Programming Because, It Is Fun!
-echo strtolower($longText) . "<br>"; // i love programming because, it is fun!
-echo strtoupper($longText) . "<br>"; // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
+printf("upperFirst: %s <br>" ,ucfirst($longText)); // I love programming because, it is fun!
+printf("upperWords: %s <br>", ucwords($longText)); // I Love Programming Because, It Is Fun!
+printf("toLower: %s <br>", strtolower($longText)); // i love programming because, it is fun!
+printf("toUpper: %s <br>", strtoupper($longText)); // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
 
 // Returns removed whitespaces
-echo ltrim("             Hello, World!") . "<br>"; // Hello, World!
-echo rtrim("Text with whitespace!                   "); // Text with whitespace!
-echo trim(" Text with whitespace.       ") . "<br>"; // Text with whitespace.
-  ?>
+printf("leftTrim: %s <br>", ltrim("             Hello, World!")); // Hello, World!
+printf("rightTrim: %s <br>", rtrim("Text with whitespace!              ")); // Text with whitespace!
+printf("trim: %s <br>", trim(" Text with whitespace.       ")); // Text with whitespace.
 ```
 
 #### Array Functions 
@@ -837,6 +842,8 @@ Name | Description
 `array_splice()` | Remove a portion of the array and replace it with something else
 `array_search()` | Searches the array for a given value and returns the first corresponding key if successful
 `array_key_exists()` | Checks if the given key or index exists in the array
+
+[Reference](https://www.php.net/manual/en/book.array.php)
 
 ##### Example:
 
